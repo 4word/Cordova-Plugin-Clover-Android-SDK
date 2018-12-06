@@ -1,4 +1,4 @@
-package cordova-plugin-clover-sdk;
+package com.tituspeterson.cordova.cloversdk;
 
 import com.clover.sdk.util.Platform2
 import com.clover.sdk.v3.scanner.BarcodeScanner
