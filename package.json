@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-clover-sdk",
+  "version": "0.1.0",
+  "description": "A wrapper for the Clover Android SDK",
+  "cordova": {
+    "id": "cordova-plugin-clover-sdk",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Titus Peterson",
+  "license": "ISC"
+}

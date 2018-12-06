@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-clover-sdk" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>CloverAndroidSDK</name>
+    <js-module name="CloverAndroidSDK" src="www/CloverAndroidSDK.js">
+        <clobbers target="cordova.plugins.CloverAndroidSDK"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CloverAndroidSDK">
+                <param name="android-package" value="com.tituspeterson.CordovaPluginCloverAndroidSDK.CloverAndroidSDK"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+            <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="17" />
+        </config-file>
+        <source-file src="src/android/CloverAndroidSDK.java"
+                     target-dir="src/cordova-plugin-clover-sdk/CloverAndroidSDK"/>
+        <framework custom="true" src="src/android/deps.gradle" type="gradleReference" />
+    </platform>
+</plugin>
