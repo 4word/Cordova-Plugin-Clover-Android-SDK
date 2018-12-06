@@ -63,8 +63,7 @@ public class CloverAndroidSDK extends CordovaPlugin {
     }
 
     private boolean checkCloverDevice(CallbackContext callbackContext) {
-        Platform2 platform = new Platform2();
-        boolean isClover = platform.isClover();
+        boolean isClover = Platform2.isClover();
         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, isClover);
         callbackContext.sendPluginResult(pluginResult);
         return isClover;
