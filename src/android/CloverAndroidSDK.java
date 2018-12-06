@@ -1,4 +1,4 @@
-package com.tituspeterson.CordovaPluginCloverAndroidSDK;
+package cordova-plugin-clover-sdk;
 
 import com.clover.sdk.util.Platform2
 import com.clover.sdk.v3.scanner.BarcodeScanner
@@ -42,11 +42,11 @@ public class CloverAndroidSDK extends CordovaPlugin {
     }
 
     private void registerBarcodeScanner() {
-        registerReceiver(barcodeReceiver, new IntentFilter(BARCODE_BROADCAST));
+        this.cordova.getActivity().getApplicationContext().registerReceiver(barcodeReceiver, new IntentFilter(BARCODE_BROADCAST));
     }
 
     private void unregisterBarcodeScanner() {
-        unregisterReceiver(barcodeReceiver);
+        this.cordova.getActivity().getApplicationContext().unregisterReceiver(barcodeReceiver);
     }
 
     @Override
@@ -80,11 +80,11 @@ public class CloverAndroidSDK extends CordovaPlugin {
     }
 
     public boolean startBarcodeScanner() {
-        return new BarcodeScanner(this).startScan(getBarcodeSetting(true));
+        return new BarcodeScanner(this.cordova.getActivity().getApplicationContext()).startScan(getBarcodeSetting(true));
     }
 
     public boolean stopBarcodeScanner() {
-        return new BarcodeScanner(this).stopScan(getBarcodeSetting(false));
+        return new BarcodeScanner(this.cordova.getActivity().getApplicationContext()).stopScan(getBarcodeSetting(false));
     }
 
     private class BarcodeReceiver extends BroadcastReceiver {
