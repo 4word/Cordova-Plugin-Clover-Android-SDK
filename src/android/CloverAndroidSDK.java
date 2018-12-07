@@ -1,7 +1,8 @@
 package com.tituspeterson.cordova.cloversdk;
 
-import com.clover.sdk.util.Platform2
-import com.clover.sdk.v3.scanner.BarcodeScanner
+import com.clover.sdk.util.Platform2;
+import com.clover.sdk.v3.scanner.BarcodeScanner;
+import com.clover.sdk.v1.Intents;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -51,7 +52,7 @@ public class CloverAndroidSDK extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("isClover") {
+        if (action.equals("isClover")) {
             checkCloverDevice(callbackContext);
             return true;
         } else if (action.equals("startScan")) {
