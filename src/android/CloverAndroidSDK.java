@@ -21,6 +21,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * This class echoes a string called from JavaScript.
  */
@@ -80,10 +83,12 @@ public class CloverAndroidSDK extends CordovaPlugin {
     }
 
     public boolean startBarcodeScanner() {
+        registerBarcodeScanner();
         return new BarcodeScanner(this.cordova.getActivity().getApplicationContext()).startScan(getBarcodeSetting(true));
     }
 
     public boolean stopBarcodeScanner() {
+        unregisterBarcodeScanner();
         return new BarcodeScanner(this.cordova.getActivity().getApplicationContext()).stopScan(getBarcodeSetting(false));
     }
 
@@ -91,6 +96,8 @@ public class CloverAndroidSDK extends CordovaPlugin {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            Logger.getAnonymousLogger().log(Level.INFO, "*********** action ****************");
+            Logger.getAnonymousLogger().log(Level.INFO, action);
             if (action.equals(BARCODE_BROADCAST)) {
                 stopBarcodeScanner();
                 String barcode = intent.getStringExtra("Barcode");
@@ -98,7 +105,14 @@ public class CloverAndroidSDK extends CordovaPlugin {
                     PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, barcode);
                     callbackContext.sendPluginResult(pluginResult);
                 }
+                Logger.getAnonymousLogger().log(Level.INFO, barcode);
+//                unregisterBarcodeScanner();
             }
+
         }
     }
+
+
+
 }
+
